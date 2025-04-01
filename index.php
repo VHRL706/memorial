@@ -36,7 +36,7 @@
 		<!-- Thumbnail -->
 		<section id="thumbnails">
 			<?php
-			$images = glob("images/*.{jpg,jpeg,png,gif}", GLOB_BRACE);
+			$images = glob("images/*.{jpg,JPG,jpeg,JPEG,png,PNG,gif}", GLOB_BRACE);
 			sort($images); // optional: alphabetically sort
 			foreach ($images as $imgPath):
 				$imgName = basename($imgPath);
