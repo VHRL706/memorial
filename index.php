@@ -48,7 +48,7 @@
 
 			<?php
 			$dir = "images";
-			$allowed_types = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+			$allowed_types = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'HEIC'];
 			$files = scandir($dir);
 
 			foreach ($files as $file) {
@@ -61,7 +61,10 @@
 						<a class="thumbnail" href="<?php echo $file_path; ?>" data-position="left center">
 							<img src="<?php echo $file_path; ?>" alt="<?php echo $imgName; ?>" />
 						</a>
+
+						<!-- Remove if don't want image name at bottom -->
 						<h2><?php echo $imgName; ?></h2>
+
 						<p></p>
 					</article>
 			<?php
