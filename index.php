@@ -36,19 +36,28 @@
 		<!-- Thumbnail -->
 		<section id="thumbnails">
 			<?php
-			$images = glob("images/*.{jpg,JPG,jpeg,JPEG,png,PNG,gif}", GLOB_BRACE);
-			sort($images); // optional: alphabetically sort
-			foreach ($images as $imgPath):
-				$imgName = basename($imgPath);
+			$dir = "images";
+			$allowed_types = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+			$files = scandir($dir);
+
+			foreach ($files as $file) {
+				$file_path = $dir . "/" . $file;
+				$ext = strtolower(pathinfo($file_path, PATHINFO_EXTENSION));
+				if (in_array($ext, $allowed_types)) {
+					$imgName = htmlspecialchars(pathinfo($file, PATHINFO_FILENAME));
 			?>
-				<article class="thumb">
-					<a href="<?php echo $imgPath; ?>" class="image">
-						<img src="<?php echo $imgPath; ?>" alt="<?php echo htmlspecialchars($imgName); ?>" />
-					</a>
-					<h2><?php echo pathinfo($imgName, PATHINFO_FILENAME); ?></h2>
-					<p></p>
-				</article>
-			<?php endforeach; ?>
+					<article class="thumb">
+						<a href="<?php echo $file_path; ?>" class="image">
+							<img src="<?php echo $file_path; ?>" alt="<?php echo $imgName; ?>" />
+						</a>
+						<h2><?php echo $imgName; ?></h2>
+						<p></p>
+					</article>
+			<?php
+				}
+			}
+			?>
+
 		</section>
 
 		<!-- Footer -->
