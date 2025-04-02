@@ -35,6 +35,17 @@
 
 		<!-- Thumbnail -->
 		<section id="thumbnails">
+			<!-- <article>
+				<a class="thumbnail" href="images/01.jpg" data-position="left center"><img src="images/01.jpg" alt="" /></a>
+				<h2>Diam tempus accumsan</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+			</article>
+			<article>
+				<a class="thumbnail" href="images/02.jpg"><img src="images/02.jpg" alt="" /></a>
+				<h2>Vivamus convallis libero</h2>
+				<p>Sed velit lacus, laoreet at venenatis convallis in lorem tincidunt.</p>
+			</article> -->
+
 			<?php
 			$dir = "images";
 			$allowed_types = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
@@ -46,8 +57,8 @@
 				if (in_array($ext, $allowed_types)) {
 					$imgName = htmlspecialchars(pathinfo($file, PATHINFO_FILENAME));
 			?>
-					<article class="thumb">
-						<a href="<?php echo $file_path; ?>" class="image">
+					<article>
+						<a class="thumbnail" href="<?php echo $file_path; ?>" data-position="left center">
 							<img src="<?php echo $file_path; ?>" alt="<?php echo $imgName; ?>" />
 						</a>
 						<h2><?php echo $imgName; ?></h2>
