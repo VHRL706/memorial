@@ -48,7 +48,7 @@
 
 			<?php
 			$dir = "images";
-			$allowed_types = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'HEIC'];
+			$allowed_types = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
 			$files = scandir($dir);
 
 			foreach ($files as $file) {
