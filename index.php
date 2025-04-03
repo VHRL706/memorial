@@ -33,7 +33,7 @@
 
 		<!-- Main -->
 		<div id="main">
-			<article class="thumb">
+			<!-- <article class="thumb">
 				<a href="images/fulls/01.jpg" class="image"><img src="images/thumbs/01.jpg" alt="" /></a>
 				<h2>Magna feugiat lorem</h2>
 				<p>Nunc blandit nisi ligula magna sodales lectus elementum non. Integer id venenatis velit.</p>
@@ -42,7 +42,32 @@
 				<a href="images/fulls/02.jpg" class="image"><img src="images/thumbs/02.jpg" alt="" /></a>
 				<h2>Nisl adipiscing</h2>
 				<p>Nunc blandit nisi ligula magna sodales lectus elementum non. Integer id venenatis velit.</p>
-			</article>
+			</article> -->
+
+
+			<?php
+			$dir = "images/fulls";
+			$allowed = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+			$files = array_filter(scandir($dir), function ($f) use ($dir, $allowed) {
+				$ext = strtolower(pathinfo($f, PATHINFO_EXTENSION));
+				return is_file("$dir/$f") && in_array($ext, $allowed);
+			});
+			sort($files);
+
+			foreach ($files as $file) {
+				$filePath = "images/fulls/$file";
+				$thumbPath = "images/thumbs/$file"; // assuming same name
+				$title = pathinfo($file, PATHINFO_FILENAME);
+			?>
+				<article class="thumb">
+					<a href="<?= $filePath ?>" class="image"><img src="<?= $thumbPath ?>" alt="<?= $title ?>" /></a>
+					<h2><?= htmlspecialchars($title) ?></h2>
+					<p></p>
+				</article>
+			<?php } ?>
+
+
+
 		</div>
 
 		<!-- Footer -->
@@ -95,7 +120,6 @@
 
 	</div>
 
-	<!-- Scripts -->
 	<!-- Scripts -->
 	<script src="assets/js/jquery.min.js?v=<?= filemtime('assets/js/jquery.min.js') ?>"></script>
 	<script src="assets/js/browser.min.js?v=<?= filemtime('assets/js/browser.min.js') ?>"></script>
