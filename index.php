@@ -35,28 +35,26 @@
 		<div id="main">
 			<?php
 			// --- IMAGES ---
-			$thumbs = glob("images/thumbs/*.{jpg,jpeg,png,gif}", GLOB_BRACE);
-			
-			foreach ($thumbs as $thumb) {
-				$filename = basename($thumb);
-				$full = "images/fulls/" . $filename;
-			
+			$images = glob("images/*.{jpg,JPG,jpeg,png,gif}", GLOB_BRACE);
+
+			foreach ($images as $img) {
+				$filename = basename($img);
+
 				echo '<article class="thumb">
-						<a href="'.$full.'" class="image"><img src="'.$thumb.'" alt="" /></a>
-						<h2>'.pathinfo($filename, PATHINFO_FILENAME).'</h2>
-						<p>Photo</p>
-					  </article>';
+            <a href="' . $img . '" class="image"><img src="' . $img . '" alt="" /></a>
+            <h2>' . pathinfo($filename, PATHINFO_FILENAME) . '</h2>
+            <p>Photo</p>
+          </article>';
 			}
-			
+
 			// --- VIDEOS ---
 			$videos = glob("videos/*.{mp4,webm,ogg}", GLOB_BRACE);
-			
+
 			foreach ($videos as $video) {
 				$filename = basename($video);
-				$poster = "images/thumbs/placeholder.jpg"; // optional static thumbnail
 			
 				echo '<article class="thumb">
-						<video controls width="100%" poster="'.$poster.'">
+						<video controls width="100%">
 							<source src="'.$video.'" type="video/mp4">
 							Your browser does not support the video tag.
 						</video>
@@ -65,7 +63,7 @@
 					  </article>';
 			}
 			?>
-			</div>
+		</div>
 
 		<!-- Footer -->
 		<footer id="footer" class="panel">
