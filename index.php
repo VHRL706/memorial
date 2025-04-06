@@ -35,7 +35,7 @@
 		<div id="main">
 			<?php
 			// --- IMAGES ---
-			$images = glob("images/*.{jpg,JPG,jpeg,png,gif,HEIC,}", GLOB_BRACE);
+			$images = glob("images/*.{jpg,JPG,jpeg,png,gif,HEIC}", GLOB_BRACE);
 
 			foreach ($images as $img) {
 				$filename = basename($img);
